@@ -21,7 +21,7 @@
                 <span class="mdl-layout-title">Select a City</span>
                 <nav class="mdl-navigation">
                     {% for location in tappedLocations %}
-                        <a class="mdl-navigation__link" href="/list/{{location}}">{{location}}</a>
+                        <a class="mdl-navigation__link" href="/list/{{location.city}}">{{location.city}}</a>
                     {% endfor %}
                 </nav>
             </div>

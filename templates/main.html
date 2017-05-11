@@ -12,8 +12,8 @@
 		</center>
 		<div class="mdl-grid">
 		    {% for location in tappedLocations %}
-	  			<div class="mdl-cell mdl-cell--2-col location-element" onclick="viewList('{{location}}')">
-		        	<center><span class="location-text">{{location}}</span></center>
+	  			<div class="mdl-cell mdl-cell--2-col location-element" onclick="viewList('{{location.city}}')">
+		        	<center><span class="location-text">{{location.city}}</span></center>
 		        </div>
 		    {% endfor %}
 	    </div>

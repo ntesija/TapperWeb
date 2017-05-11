@@ -1,8 +1,8 @@
-from globals import tappedLocations, locations
+from globals import locations
 from tapperWeb import getTapperData
 from bottleOpenerWeb import getBottleOpenerData
 from pymongo import MongoClient
-import sys, time, datetime
+import sys, time, datetime, pymongo
 
 client = MongoClient()
 db = client['heroku_qst864ll']
@@ -24,14 +24,25 @@ def updateDatabase():
 			collection = db[location]
 			collection.delete_many({})
 			collection.insert_many(data)
-			if location not in tappedLocations:
-				tappedLocations.append(location)
+
+			locationCollection = db['locations']
+			tappedLocation = locationCollection.find_one({'city': location})
+			if not tappedLocation:
+				locationCollection.insert({'city': location})
+		except TypeError as e:
+			print(e)
 		except:
 			print("Error getting Tapper data for {}: {}\n".format(location, sys.exc_info()[0]))
-			if location in tappedLocations:
-				tappedLocations.remove(location)
+			tappedLocation = locationCollection.find_one({'city': location})
+			if tappedLocation:
+				locationCollection.remove({'city': location})
+				
 def updateLoop():
 	startTime = time.time()
 	while True:
 		updateDatabase()
 		time.sleep(updateTime - ((time.time() - startTime) % 60.0))
+
+
+if __name__ == "__main__":
+	updateLoop()

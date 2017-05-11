@@ -1,5 +1,3 @@
-tappedLocations = []
-
 locations = [
 	"ann-arbor",
 	# "detroit", # Uses info from Untappd

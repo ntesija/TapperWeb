@@ -2,21 +2,25 @@ import threading
 from flask import Flask, jsonify, render_template, url_for, abort, request
 from pymongo import MongoClient
 from updateDatabase import updateLoop
-from globals import tappedLocations
 
 app = Flask(__name__)
 
-db = client.hopcat
+client = MongoClient()
 db = client['heroku_qst864ll']
 
 @app.route("/")
 def home():
+	locationCollection = db['locations']
+	tappedLocations = locationCollection.find()
 	return render_template("main.html", tappedLocations=tappedLocations)
 
 @app.route("/list/<location>")
 def list(location):
 	notSorted = True
 	collection = db[location]
+	locationCollection = db['locations']
+	tappedLocations = locationCollection.find()
+
 	if collection.count() == 0:
 		abort(404)
 	data = collection.find()
@@ -36,13 +40,16 @@ def list(location):
 
 @app.errorhandler(404)
 def pageNotFound(e):
+	locationCollection = db['locations']
+	tappedLocations = locationCollection.find()
 	return render_template("404.html", tappedLocations=tappedLocations), 404
 
 @app.errorhandler(500)
 def internalError(e):
+	locationCollection = db['locations']
+	tappedLocations = locationCollection.find()
 	return render_template("500.html", tappedLocations=tappedLocations), 500
 
 
 if __name__ == "__main__":
-	updateThread = threading.Thread(target=updateLoop).start()
-	app.run(threaded=True)
+	app.run(threaded=True, debug=True)

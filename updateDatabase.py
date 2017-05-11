@@ -18,7 +18,7 @@ def updateDatabase():
 				bottleList = getBottleOpenerData(location)
 				data = beerList + bottleList
 			except:
-				output += "Error getting bottle data for {}\n".format(location)
+				print("Error getting bottle data for {}\n".format(location))
 				data = beerList
 			data = sorted(data, key=lambda beer: beer['ppv'], reverse=True)
 			collection = db[location]
@@ -27,14 +27,9 @@ def updateDatabase():
 			if location not in tappedLocations:
 				tappedLocations.append(location)
 		except:
-			output += "Error getting Tapper data for {}: {}\n".format(location, sys.exc_info()[0])
+			print("Error getting Tapper data for {}: {}\n".format(location, sys.exc_info()[0]))
 			if location in tappedLocations:
 				tappedLocations.remove(location)
-	if not output == "":
-		logName = str(datetime.datetime.now().day) + "-" + str(datetime.datetime.now().month) + "-" + str(datetime.datetime.now().year) + ".log"
-		log = open(logName, 'w')
-		log.write(output)
-		log.close()
 def updateLoop():
 	startTime = time.time()
 	while True:

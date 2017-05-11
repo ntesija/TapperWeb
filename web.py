@@ -12,7 +12,8 @@ db = client['heroku_qst864ll']
 def home():
 	locationCollection = db['locations']
 	tappedLocations = locationCollection.find()
-	return render_template("main.html", tappedLocations=tappedLocations)
+	mainList = locationCollection.find()
+	return render_template("main.html", tappedLocations=tappedLocations, mainList=mainList)
 
 @app.route("/list/<location>")
 def list(location):

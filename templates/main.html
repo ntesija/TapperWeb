@@ -11,7 +11,7 @@
 			<h4>This website exists to help people find the most value for their dollar (Price Per Ounce of Alcohol) at HopCat locations. I created this since I love HopCat, but found that I often didn't want to spend too much money there. Please drink responsibly.</h4>
 		</center>
 		<div class="mdl-grid">
-		    {% for location in tappedLocations %}
+		    {% for location in mainList %}
 	  			<div class="mdl-cell mdl-cell--2-col location-element" onclick="viewList('{{location.city}}')">
 		        	<center><span class="location-text">{{location.city}}</span></center>
 		        </div>

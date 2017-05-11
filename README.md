@@ -2,8 +2,6 @@
 
 The HopCat Tapper is used to find out how to get the most bang for your buck at HopCat. As a college student, I wanted to make a program that helped users living on a budget find a way to get the most out of their beers.
 
-**Note:** *This only checks for beers on tap, no bottles currently*
-
 **PLEASE DRINK RESPONSIBLY**
 
 ## Getting Started

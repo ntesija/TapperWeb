@@ -1,11 +1,11 @@
-import threading
+import threading, os
 from flask import Flask, jsonify, render_template, url_for, abort, request
 from pymongo import MongoClient
 from updateDatabase import updateLoop
 
 app = Flask(__name__)
 
-client = MongoClient()
+client = MongoClient(os.environ['MONGODB_URI'])
 db = client['heroku_qst864ll']
 
 @app.route("/")

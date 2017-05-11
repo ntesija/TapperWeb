@@ -2,9 +2,9 @@ from globals import locations
 from tapperWeb import getTapperData
 from bottleOpenerWeb import getBottleOpenerData
 from pymongo import MongoClient
-import sys, time, datetime, pymongo
+import sys, time, datetime, pymongo, os
 
-client = MongoClient()
+client = MongoClient(os.environ['MONGODB_URI'])
 db = client['heroku_qst864ll']
 
 updateTime = 86400.0 # 1 Day

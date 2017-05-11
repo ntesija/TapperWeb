@@ -44,4 +44,4 @@ def internalError(e):
 
 if __name__ == "__main__":
 	updateThread = threading.Thread(target=updateLoop).start()
-	app.run(debug=True, threaded=True)
+	app.run(threaded=True)

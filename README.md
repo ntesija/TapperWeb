@@ -7,37 +7,14 @@ The HopCat Tapper is used to find out how to get the most bang for your buck at 
 **PLEASE DRINK RESPONSIBLY**
 
 ## Getting Started
-First install the requirements by running:
+First, install MongoDB and run it with the `mongod` command. 
 
-`sudo pip3 install -r requirements.txt`
+Next, install the requirements by running:
 
-Then run the program with:
+`pip install -r requirements.txt`
 
-`python3 tapper.py`
+Then, run the program with:
 
+`python web.py`
 
-
-## Required Input
-### Location
-For the locations, check out https://hopcat.com and select a location from the dropdown, the location that you need to input should be the string after the last '/' in the url
-Examples:
-
-`ann-arbor`
-
-`detroit`
-
-`east-lansing`
-
-`chicago`
-
-**Note:** *Currently the HopCat website will not 404 if a user tries to view a beer list for an incorrect city name. If the Excel sheet is empty, it is possible that you may have mis-typed the location.*
-
-### Filename
-Filename must not be blank, any whitespace in the filename will be removed
-
-
-
-## Output
-If everything works properly, you should have an Excel document in the project folder with the name you gave it.
-The top-most beer will be have the most alcohol for the amount you will pay.
-The `Type` column will be what type of beer it is.
+The website should be running on localhost:5000 at this point!

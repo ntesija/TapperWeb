@@ -5,8 +5,9 @@ from updateDatabase import updateLoop
 from globals import tappedLocations
 
 app = Flask(__name__)
-client = MongoClient()
+
 db = client.hopcat
+db = client['heroku_qst864ll']
 
 @app.route("/")
 def home():

@@ -5,7 +5,7 @@ from pymongo import MongoClient
 import sys, time, datetime
 
 client = MongoClient()
-db = client.hopcat
+db = client['heroku_qst864ll']
 
 updateTime = 86400.0 # 1 Day
 

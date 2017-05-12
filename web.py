@@ -25,6 +25,7 @@ def list(location):
 	if collection.count() == 0:
 		abort(404)
 	data = collection.find()
+	data = sorted(data, key=lambda beer: beer['ppv'], reverse=True)
 	typeList = []
 	types=[]
 	if 'sort' in request.args:

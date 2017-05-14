@@ -32,7 +32,7 @@ def getBottleOpenerData(cityName):
         
         
         #Beer information is 8 indicies apart
-        for i in range (0, math.floor(len(beers) / 8)):
+        for i in range (0, int(math.floor(len(beers) / 8))):
             #Starting index for beer information
             ind = i * 8
             

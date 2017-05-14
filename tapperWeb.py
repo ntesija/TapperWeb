@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from globals import colors
 import urllib3, random, math, certifi
+from time import gmtime, strftime
 
 def getTapperData(cityName):
     location = cityName
@@ -69,7 +70,8 @@ def getTapperData(cityName):
                 'volume': volume,
                 'currentType': currentType,
                 'currentColor': currentColor,
-                'ppv': ppv
+                'ppv': ppv,
+                'lastUpdate': strftime("%Y-%m-%d %H:%M:%S", gmtime())
             })
 
     beerData = sorted(beerData, key=lambda beer: beer['ppv'], reverse=True)
